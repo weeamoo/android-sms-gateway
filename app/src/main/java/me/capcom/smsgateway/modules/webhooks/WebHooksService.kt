@@ -52,9 +52,6 @@ class WebHooksService(
     }
 
     fun replace(source: EntitySource, webHook: WebHookDTO) {
-        if (!URLUtil.isHttpsUrl(webHook.url)) {
-            throw IllegalArgumentException("Invalid URL")
-        }
         if (webHook.event !in WebHookEvent.values()) {
             throw IllegalArgumentException(
                 "Unsupported event"
